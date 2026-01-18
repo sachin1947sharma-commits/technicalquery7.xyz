@@ -44,6 +44,15 @@
             line-height: 1.6;
         }
 
+        /* Hidden Sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
         /* Header & Navigation */
         header {
             background: var(--bg-white);
@@ -69,6 +78,7 @@
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -90,6 +100,7 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -449,6 +460,117 @@
             margin: 1rem 0;
         }
 
+        /* AdSense & Legal Pages */
+        .legal-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        .legal-section h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .legal-section h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .legal-section h3 {
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-section p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .legal-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .about-card {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            background: #dcfce7;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item strong {
+            color: var(--text-dark);
+            min-width: 120px;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            margin-bottom: 1rem;
+        }
+
         /* Footer */
         footer {
             background: var(--text-dark);
@@ -479,6 +601,7 @@
             color: #cbd5e1;
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .footer-section a:hover {
@@ -495,13 +618,25 @@
         /* AdSense Placeholder */
         .ads-container {
             margin: 2rem 0;
-            padding: 1rem;
-            background: #f0f9ff;
-            border: 1px dashed var(--primary);
+            padding: 2rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px dashed var(--primary);
             border-radius: 8px;
             text-align: center;
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .ads-container::before {
+            content: "📢";
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Alerts */
@@ -540,6 +675,7 @@
 
             nav ul {
                 gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .modal-content {
@@ -553,6 +689,10 @@
             .hero-buttons .btn {
                 width: 100%;
             }
+
+            .legal-section {
+                padding: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -562,7 +702,7 @@
 
             nav ul {
                 gap: 0.5rem;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
 
             .hero {
@@ -572,27 +712,18 @@
             .upload-container {
                 padding: 1.5rem;
             }
+
+            .legal-section h1 {
+                font-size: 1.8rem;
+            }
         }
 
-        /* Loading Spinner */
-        .spinner {
-            border: 3px solid rgba(37, 99, 235, 0.1);
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            display: none;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .spinner.show {
-            display: block;
+        .last-updated {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
@@ -600,161 +731,484 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="#" class="logo">CodeShare</a>
+            <a onclick="showSection('home')" class="logo">CodeShare</a>
             <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('programs')">Programs</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" onclick="scrollToUpload(); return false;">Upload</a></li>
             </ul>
-            <button class="btn btn-primary" onclick="scrollToUpload()">Upload Program</button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Share Your Code with the World</h1>
-        <p>Upload, execute, and share your programming projects. Learn from others, collaborate, and build together.</p>
-        <div class="ads-container">
-            📢 Advertisement Space (Google AdSense)
-        </div>
-        <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="scrollToUpload()">Start Uploading</button>
-            <button class="btn btn-secondary" onclick="document.getElementById('programs').scrollIntoView({behavior: 'smooth'})">Browse Programs</button>
-        </div>
-    </section>
+    <!-- HOME SECTION -->
+    <div id="home" class="section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Share Your Code with the World</h1>
+            <p>Upload, execute, and share your programming projects. Learn from others, collaborate, and build together.</p>
+            <div class="ads-container">Google AdSense Ad Space 1</div>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToUpload()">Start Uploading</button>
+                <button class="btn btn-secondary" onclick="showSection('programs')">Browse Programs</button>
+            </div>
+        </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <h2 class="section-title">Why Choose CodeShare?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Fast Execution</h3>
-                <p>Execute your code instantly with minimal latency and see results in real-time.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Secure & Safe</h3>
-                <p>Your code runs in a sandboxed environment. We prioritize security and privacy.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Learn Together</h3>
-                <p>Browse community programs, learn from others, and improve your coding skills.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Global Community</h3>
-                <p>Connect with developers worldwide and share your knowledge with everyone.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💾</div>
-                <h3>Easy Sharing</h3>
-                <p>Share your programs with a single click and get feedback from the community.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Analytics</h3>
-                <p>Track views and engagement for your uploaded programs.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upload Section -->
-    <section class="upload-section" id="upload">
-        <h2 class="section-title">Upload Your Program</h2>
-        <div class="upload-container" id="uploadContainer">
-            <div class="upload-icon">📤</div>
-            <h2>Upload Your Program</h2>
-            <p>Drag and drop your code file or click to select</p>
-            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Choose File</button>
-            <input type="file" id="fileInput" accept=".py,.js,.java,.cpp,.c,.html,.css,.txt,.json,.xml">
-        </div>
-
-        <div id="uploadForm" style="display: none; margin-top: 2rem;">
-            <div class="alert alert-success" id="successAlert">Program uploaded successfully!</div>
-            <div class="alert alert-error" id="errorAlert"></div>
-            
-            <form id="programForm">
-                <div class="form-group">
-                    <label for="programTitle">Program Title *</label>
-                    <input type="text" id="programTitle" required placeholder="Enter program title">
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <h2 class="section-title">Why Choose CodeShare?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Execution</h3>
+                    <p>Execute your code instantly with minimal latency and see results in real-time.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="programDescription">Description</label>
-                    <textarea id="programDescription" placeholder="Describe what your program does..."></textarea>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your code runs in a sandboxed environment. We prioritize security and privacy.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="programLanguage">Programming Language *</label>
-                    <select id="programLanguage" required>
-                        <option value="">Select Language</option>
-                        <option value="Python">Python</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="Java">Java</option>
-                        <option value="C++">C++</option>
-                        <option value="C">C</option>
-                        <option value="HTML/CSS">HTML/CSS</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Learn Together</h3>
+                    <p>Browse community programs, learn from others, and improve your coding skills.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="programCode">Code Preview</label>
-                    <div class="code-preview" id="codePreview" style="max-height: 300px; overflow-y: auto;">Select a file to preview...</div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Community</h3>
+                    <p>Connect with developers worldwide and share your knowledge with everyone.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="tags">Tags (comma separated)</label>
-                    <input type="text" id="tags" placeholder="e.g. beginner, web, tutorial">
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Easy Sharing</h3>
+                    <p>Share your programs with a single click and get feedback from the community.</p>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Track views and engagement for your uploaded programs.</p>
+                </div>
+            </div>
+        </section>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Upload Program</button>
-            </form>
-        </div>
-    </section>
+        <!-- Upload Section -->
+        <section class="upload-section" id="upload">
+            <h2 class="section-title">Upload Your Program</h2>
+            <div class="upload-container" id="uploadContainer">
+                <div class="upload-icon">📤</div>
+                <h2>Upload Your Program</h2>
+                <p>Drag and drop your code file or click to select</p>
+                <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                <input type="file" id="fileInput" accept=".py,.js,.java,.cpp,.c,.html,.css,.txt,.json,.xml">
+            </div>
 
-    <div class="ads-container">
-        📢 Advertisement Space (Google AdSense)
+            <div id="uploadForm" style="display: none; margin-top: 2rem;">
+                <div class="alert alert-success" id="successAlert">Program uploaded successfully!</div>
+                <div class="alert alert-error" id="errorAlert"></div>
+                
+                <form id="programForm">
+                    <div class="form-group">
+                        <label for="programTitle">Program Title *</label>
+                        <input type="text" id="programTitle" required placeholder="Enter program title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programDescription">Description</label>
+                        <textarea id="programDescription" placeholder="Describe what your program does..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programLanguage">Programming Language *</label>
+                        <select id="programLanguage" required>
+                            <option value="">Select Language</option>
+                            <option value="Python">Python</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="C">C</option>
+                            <option value="HTML/CSS">HTML/CSS</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programCode">Code Preview</label>
+                        <div class="code-preview" id="codePreview" style="max-height: 300px; overflow-y: auto;">Select a file to preview...</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">Tags (comma separated)</label>
+                        <input type="text" id="tags" placeholder="e.g. beginner, web, tutorial">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Upload Program</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="ads-container">Google AdSense Ad Space 2</div>
+
+        <!-- FAQ Section -->
+        <section style="max-width: 900px; margin: 4rem auto; padding: 0 2rem;" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="display: grid; gap: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is CodeShare free?</h3>
+                    <p style="color: var(--text-gray);">Yes! CodeShare is completely free to use. Upload, share, and execute your programs without any cost.</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">What languages are supported?</h3>
+                    <p style="color: var(--text-gray);">We support Python, JavaScript, Java, C++, C, HTML/CSS, and more. Check our documentation for the full list.</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is my code secure?</h3>
+                    <p style="color: var(--text-gray);">Your code runs in a secure, sandboxed environment. We use industry-standard security practices to protect your data.</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Can I delete my uploaded programs?</h3>
+                    <p style="color: var(--text-gray);">Yes, you can delete any of your programs at any time. Just click the delete button on the program card.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="ads-container">Google AdSense Ad Space 3</div>
     </div>
 
-    <!-- Programs Section -->
-    <section class="programs-section" id="programs">
-        <h2 class="section-title">Community Programs</h2>
-        <div class="programs-grid" id="programsGrid">
-            <!-- Programs will be loaded here -->
-        </div>
-        <div id="emptyState" style="text-align: center; padding: 3rem; color: var(--text-gray);">
-            <p style="font-size: 1.1rem;">No programs uploaded yet. Be the first to share!</p>
-        </div>
-    </section>
+    <!-- PROGRAMS SECTION -->
+    <div id="programs" class="section">
+        <section class="programs-section">
+            <h2 class="section-title">Community Programs</h2>
+            <div class="programs-grid" id="programsGrid">
+                <!-- Programs will be loaded here -->
+            </div>
+            <div id="emptyState" style="text-align: center; padding: 3rem; color: var(--text-gray);">
+                <p style="font-size: 1.1rem;">No programs uploaded yet. <a href="#" onclick="showSection('home'); scrollToUpload(); return false;" style="color: var(--primary); cursor: pointer;">Be the first to share!</a></p>
+            </div>
+        </section>
+    </div>
 
-    <!-- FAQ Section -->
-    <section style="max-width: 900px; margin: 4rem auto; padding: 0 2rem;" id="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="display: grid; gap: 1.5rem;">
-            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is CodeShare free?</h3>
-                <p style="color: var(--text-gray);">Yes! CodeShare is completely free to use. Upload, share, and execute your programs without any cost.</p>
-            </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">What languages are supported?</h3>
-                <p style="color: var(--text-gray);">We support Python, JavaScript, Java, C++, C, HTML/CSS, and more. Check our documentation for the full list.</p>
-            </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is my code secure?</h3>
-                <p style="color: var(--text-gray);">Your code runs in a secure, sandboxed environment. We use industry-standard security practices to protect your data.</p>
-            </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Can I delete my uploaded programs?</h3>
-                <p style="color: var(--text-gray);">Yes, you can delete any of your programs at any time. Just click the delete button on the program card.</p>
-            </div>
-        </div>
-    </section>
+    <!-- ABOUT SECTION -->
+    <div id="about" class="section">
+        <div class="legal-section">
+            <h1>About CodeShare</h1>
+            <p>CodeShare is a free, open platform dedicated to helping developers worldwide share, learn, and grow together through code. We believe in the power of community-driven learning and open collaboration.</p>
 
-    <div class="ads-container">
-        📢 Advertisement Space (Google AdSense)
+            <h2>Our Mission</h2>
+            <p>To create the world's most accessible and welcoming platform for programmers of all skill levels to share their code, learn from others, and contribute to a thriving global developer community.</p>
+
+            <h2>What We Offer</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>📤 Easy Upload</h3>
+                    <p>Upload your code in seconds with support for multiple programming languages and formats.</p>
+                </div>
+                <div class="about-card">
+                    <h3>👥 Community</h3>
+                    <p>Connect with millions of developers, share knowledge, and collaborate on projects.</p>
+                </div>
+                <div class="about-card">
+                    <h3>📚 Learn</h3>
+                    <p>Browse thousands of programs, from beginner tutorials to advanced implementations.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🔒 Safe & Secure</h3>
+                    <p>Your code is protected with industry-standard security and privacy measures.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🚀 Free Forever</h3>
+                    <p>CodeShare is completely free to use, with no hidden charges or premium walls.</p>
+                </div>
+                <div class="about-card">
+                    <h3>⭐ Growing</h3>
+                    <p>Join thousands of developers who are already sharing and learning on CodeShare.</p>
+                </div>
+            </div>
+
+            <h2>Our Values</h2>
+            <ul>
+                <li><strong>Transparency:</strong> We're open about how we operate and what we stand for.</li>
+                <li><strong>Community:</strong> We believe in the power of developers helping developers.</li>
+                <li><strong>Accessibility:</strong> Everyone should have access to quality programming resources.</li>
+                <li><strong>Quality:</strong> We maintain high standards for content and user experience.</li>
+                <li><strong>Innovation:</strong> We constantly improve and add new features.</li>
+                <li><strong>Trust:</strong> Your data and privacy are our top priority.</li>
+            </ul>
+
+            <h2>Founded</h2>
+            <p>CodeShare was founded with a simple vision: to make programming knowledge accessible to everyone. What started as a small project has grown into a thriving community of developers from around the world.</p>
+
+            <div class="last-updated">Last Updated: January 2024</div>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div id="contact" class="section">
+        <div class="legal-section">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Whether you have questions, suggestions, or just want to say hello, feel free to reach out. Our team is here to help.</p>
+
+            <div class="contact-info">
+                <h3>📧 Get in Touch</h3>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:support@codeshare.com">support@codeshare.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Support:</strong>
+                    <a href="mailto:help@codeshare.com">help@codeshare.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Business:</strong>
+                    <a href="mailto:business@codeshare.com">business@codeshare.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Response Time:</strong>
+                    <span>24-48 hours (Mon-Fri)</span>
+                </div>
+            </div>
+
+            <h2>Contact Form</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="contact-name">Your Name</label>
+                    <input type="text" id="contact-name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Your Email *</label>
+                    <input type="email" id="contact-email" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject" placeholder="How can we help?">
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" required placeholder="Tell us what you think..." style="min-height: 150px;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+            <div id="contactAlert" class="alert"></div>
+
+            <h2>Other Ways to Connect</h2>
+            <p>
+                <strong>Follow us:</strong><br>
+                📱 Twitter: <a href="#" style="color: var(--primary);">@CodeSharePlatform</a><br>
+                💼 LinkedIn: <a href="#" style="color: var(--primary);">CodeShare</a><br>
+                🐙 GitHub: <a href="#" style="color: var(--primary);">CodeSharePlatform</a><br>
+            </p>
+
+            <h2>Feedback & Suggestions</h2>
+            <p>Have an idea for a new feature? Found a bug? We're always looking to improve. Please email us at <strong>feedback@codeshare.com</strong> with your suggestions.</p>
+
+            <div class="last-updated">Last Updated: January 2024</div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY SECTION -->
+    <div id="privacy" class="section">
+        <div class="legal-section">
+            <h1>Privacy Policy</h1>
+            <p><strong>Effective Date:</strong> January 2024</p>
+            <p>CodeShare ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
+
+            <h2>1. Information We Collect</h2>
+            <h3>1.1 Information You Provide</h3>
+            <ul>
+                <li><strong>Account Information:</strong> When you create an account, we collect your name, email address, and profile information.</li>
+                <li><strong>Program Content:</strong> Code and files you upload, program titles, descriptions, and tags.</li>
+                <li><strong>Communication:</strong> Messages, feedback, and support requests you send us.</li>
+                <li><strong>Payment Information:</strong> If applicable, billing details (processed securely through third parties).</li>
+            </ul>
+
+            <h3>1.2 Automatically Collected Information</h3>
+            <ul>
+                <li><strong>Usage Data:</strong> Pages visited, time spent, clicks, and interactions with the platform.</li>
+                <li><strong>Device Information:</strong> IP address, browser type, device type, and operating system.</li>
+                <li><strong>Cookies & Tracking:</strong> We use cookies for analytics and to improve user experience.</li>
+                <li><strong>Analytics:</strong> Google Analytics helps us understand how users interact with our site.</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <ul>
+                <li>To provide, maintain, and improve our services</li>
+                <li>To process your requests and respond to inquiries</li>
+                <li>To send administrative and promotional communications (with your consent)</li>
+                <li>To comply with legal obligations</li>
+                <li>To detect, prevent, and address fraud and security issues</li>
+                <li>To monitor and analyze trends, usage, and activities</li>
+                <li>To personalize and improve your experience</li>
+                <li>To enforce our Terms & Conditions</li>
+            </ul>
+
+            <h2>3. How We Share Your Information</h2>
+            <h3>3.1 Public Content</h3>
+            <p>Any programs you upload to CodeShare are public by default and may be viewed, downloaded, and shared by other users.</p>
+
+            <h3>3.2 Third-Party Services</h3>
+            <p>We may share information with trusted service providers who help us operate our website, including:</p>
+            <ul>
+                <li>Google Analytics (analytics)</li>
+                <li>Google AdSense (advertising)</li>
+                <li>Email service providers (communications)</li>
+                <li>Hosting providers (infrastructure)</li>
+                <li>Payment processors (payments)</li>
+            </ul>
+
+            <h3>3.3 Legal Requirements</h3>
+            <p>We may disclose your information if required by law or in response to valid requests from authorities.</p>
+
+            <h2>4. Data Security</h2>
+            <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.</p>
+
+            <h2>5. Data Retention</h2>
+            <p>We retain your personal information for as long as necessary to provide our services and comply with legal obligations. You can request deletion of your account and data at any time.</p>
+
+            <h2>6. Your Privacy Rights</h2>
+            <p>Depending on your location, you may have the following rights:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data</li>
+                <li><strong>Correction:</strong> Request corrections to inaccurate data</li>
+                <li><strong>Deletion:</strong> Request deletion of your data ("right to be forgotten")</li>
+                <li><strong>Portability:</strong> Request your data in a portable format</li>
+                <li><strong>Opt-out:</strong> Opt out of marketing communications</li>
+            </ul>
+
+            <h2>7. Cookies</h2>
+            <p>We use cookies to enhance your experience. You can control cookies through your browser settings. Disabling cookies may affect functionality of our website.</p>
+
+            <h2>8. Children's Privacy</h2>
+            <p>CodeShare is not intended for children under 13. We do not knowingly collect information from children under 13. If we learn we've collected personal information from a child under 13, we'll delete it immediately.</p>
+
+            <h2>9. Third-Party Links</h2>
+            <p>Our website may contain links to third-party websites. We're not responsible for their privacy practices. Please review their privacy policies before sharing information.</p>
+
+            <h2>10. GDPR & CCPA Compliance</h2>
+            <p>If you're in the EU, you're protected under GDPR. If you're in California, you're protected under CCPA. We comply with both regulations regarding data privacy and user rights.</p>
+
+            <h2>11. Updates to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. We'll notify you of significant changes by updating the "Effective Date" at the top of this page. Your continued use of CodeShare constitutes your acceptance of updated terms.</p>
+
+            <h2>12. Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:privacy@codeshare.com">privacy@codeshare.com</a><br>
+                <strong>Support:</strong> <a href="mailto:support@codeshare.com">support@codeshare.com</a>
+            </p>
+
+            <div class="last-updated">Last Updated: January 2024 | Version 1.0</div>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS SECTION -->
+    <div id="terms" class="section">
+        <div class="legal-section">
+            <h1>Terms & Conditions</h1>
+            <p><strong>Effective Date:</strong> January 2024</p>
+            <p>These Terms & Conditions ("Terms") govern your use of CodeShare's website and services. By accessing or using CodeShare, you agree to be bound by these Terms. If you don't agree, please don't use our services.</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using CodeShare, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions and our Privacy Policy. If you're under 18, you must have parental consent to use our services.</p>
+
+            <h2>2. Use License</h2>
+            <p>We grant you a limited, non-exclusive, non-transferable license to use CodeShare for personal, non-commercial purposes. You may not:</p>
+            <ul>
+                <li>Modify or copy the materials (except for personal use)</li>
+                <li>Use the materials for any commercial purpose without written permission</li>
+                <li>Attempt to reverse engineer or decompile our code</li>
+                <li>Remove any copyright, trademark, or other proprietary notices</li>
+                <li>Transfer materials to another person or "mirror" on another server</li>
+                <li>Harass, threaten, defame, or abuse other users</li>
+                <li>Upload illegal, malicious, or harmful content</li>
+                <li>Violate any laws or third-party rights</li>
+            </ul>
+
+            <h2>3. User Content</h2>
+            <h3>3.1 Responsibility</h3>
+            <p>You are responsible for all code, files, and content you upload to CodeShare. By uploading, you represent and warrant that:</p>
+            <ul>
+                <li>You own or have the right to use the content</li>
+                <li>The content doesn't infringe on third-party rights</li>
+                <li>The content doesn't violate any laws or this agreement</li>
+                <li>The content is not malicious, harmful, or deceptive</li>
+            </ul>
+
+            <h3>3.2 License Grant</h3>
+            <p>By uploading content, you grant CodeShare a worldwide, non-exclusive license to use, reproduce, distribute, and display your content on our platform.</p>
+
+            <h3>3.3 Removal</h3>
+            <p>We reserve the right to remove content that violates these Terms or our policies without prior notice.</p>
+
+            <h2>4. Intellectual Property Rights</h2>
+            <p>CodeShare respects intellectual property rights. All original content, design, and code on CodeShare are protected by copyright and other laws. You may not reproduce or distribute them without permission.</p>
+
+            <h2>5. Disclaimer of Warranties</h2>
+            <p>CodeShare is provided "as is" and "as available" without warranties of any kind, express or implied. We don't warrant that:</p>
+            <ul>
+                <li>The website will be uninterrupted or error-free</li>
+                <li>Content will be accurate or complete</li>
+                <li>Code will work as intended on all systems</li>
+                <li>The website will meet your specific requirements</li>
+            </ul>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>In no event shall CodeShare, its owners, or employees be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the website or services.</p>
+
+            <h2>7. Indemnification</h2>
+            <p>You agree to indemnify and hold CodeShare harmless from any claims, damages, losses, or liabilities arising from:</p>
+            <ul>
+                <li>Your use of the website or services</li>
+                <li>Content you upload or share</li>
+                <li>Your violation of these Terms</li>
+                <li>Your infringement of third-party rights</li>
+            </ul>
+
+            <h2>8. User Conduct</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Post abusive, harassing, or threatening content</li>
+                <li>Spam, phish, or attempt to deceive other users</li>
+                <li>Engage in any illegal activities</li>
+                <li>Violate any applicable laws or regulations</li>
+                <li>Attempt to hack, crack, or compromise CodeShare's security</li>
+                <li>Distribute malware, viruses, or malicious code</li>
+            </ul>
+
+            <h2>9. Account Suspension or Termination</h2>
+            <p>We reserve the right to suspend or terminate your account if you violate these Terms or engage in prohibited conduct. Upon termination, you lose all rights to your account.</p>
+
+            <h2>10. Third-Party Links</h2>
+            <p>CodeShare may contain links to third-party websites. We're not responsible for their content, accuracy, or practices. Your use of third-party sites is governed by their terms and policies.</p>
+
+            <h2>11. Modifications to Terms</h2>
+            <p>We may modify these Terms at any time. Significant changes will be posted on our website. Your continued use constitutes acceptance of modified terms.</p>
+
+            <h2>12. Governing Law</h2>
+            <p>These Terms are governed by and construed in accordance with the laws of applicable jurisdiction, without regard to its conflict of law provisions.</p>
+
+            <h2>13. Dispute Resolution</h2>
+            <p>Any disputes arising from these Terms or your use of CodeShare shall be resolved through:</p>
+            <ul>
+                <li>Good faith negotiation</li>
+                <li>Mediation</li>
+                <li>Binding arbitration or litigation (as applicable by law)</li>
+            </ul>
+
+            <h2>14. Severability</h2>
+            <p>If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+            <h2>15. Entire Agreement</h2>
+            <p>These Terms, along with our Privacy Policy, constitute the entire agreement between you and CodeShare regarding your use of our website and services.</p>
+
+            <h2>16. Contact Us</h2>
+            <p>If you have questions about these Terms & Conditions, please contact us:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:legal@codeshare.com">legal@codeshare.com</a><br>
+                <strong>Support:</strong> <a href="mailto:support@codeshare.com">support@codeshare.com</a>
+            </p>
+
+            <div class="last-updated">Last Updated: January 2024 | Version 1.0</div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -762,38 +1216,39 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About CodeShare</h4>
-                <p>CodeShare is a free platform for developers to upload, share, and execute code. Join our community today!</p>
+                <p>CodeShare is a free platform for developers to upload, share, and learn from each other. Join our community today!</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#upload">Upload</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#docs">Documentation</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#support">Support</a></li>
-                    <li><a href="#api">API Docs</a></li>
+                    <li><a onclick="showSection('home')">Home</a></li>
+                    <li><a onclick="showSection('programs')">Programs</a></li>
+                    <li><a onclick="showSection('about')">About Us</a></li>
+                    <li><a onclick="showSection('contact')">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#cookies">Cookie Policy</a></li>
+                    <li><a onclick="showSection('privacy')">Privacy Policy</a></li>
+                    <li><a onclick="showSection('terms')">Terms & Conditions</a></li>
+                    <li><a onclick="showSection('contact')">Report Content</a></li>
+                    <li><a onclick="showSection('contact')">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a onclick="showSection('home')">Documentation</a></li>
+                    <li><a onclick="showSection('home')">Blog</a></li>
+                    <li><a onclick="showSection('home')">Support</a></li>
+                    <li><a onclick="showSection('home')">API Docs</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 CodeShare. All rights reserved. | Made with ❤️ by developers, for developers</p>
+            <p>&copy; 2024 CodeShare. All rights reserved. | <a onclick="showSection('privacy')" style="color: #cbd5e1; cursor: pointer;">Privacy Policy</a> | <a onclick="showSection('terms')" style="color: #cbd5e1; cursor: pointer;">Terms</a> | <a onclick="showSection('contact')" style="color: #cbd5e1; cursor: pointer;">Contact</a></p>
+            <p style="margin-top: 1rem;">Made with ❤️ by developers, for developers</p>
         </div>
     </footer>
 
@@ -814,6 +1269,21 @@
     </div>
 
     <script>
+        // Section Navigation
+        const showSection = (sectionId) => {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        };
+
         // Initialize local storage for programs
         const initializeStorage = () => {
             if (!localStorage.getItem('programs')) {
@@ -884,7 +1354,7 @@
                 return;
             }
 
-            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+            if (file.size > 5 * 1024 * 1024) {
                 showAlert('File size must be less than 5MB', 'error');
                 return;
             }
@@ -897,7 +1367,6 @@
                 document.getElementById('programTitle').value = fileName.replace(/\.[^/.]+$/, '');
                 document.getElementById('codePreview').textContent = content;
                 
-                // Detect language
                 const langMap = {
                     '.py': 'Python',
                     '.js': 'JavaScript',
@@ -936,18 +1405,14 @@
             saveProgram(program);
             showAlert('Program uploaded successfully!', 'success');
 
-            // Reset form
             programForm.reset();
             document.getElementById('codePreview').textContent = 'Select a file to preview...';
             uploadContainer.style.display = 'block';
             uploadForm.style.display = 'none';
             selectedFile = null;
 
-            // Refresh programs list
             displayPrograms();
-
-            // Scroll to programs
-            document.getElementById('programs').scrollIntoView({ behavior: 'smooth' });
+            showSection('programs');
         });
 
         // Display programs
@@ -990,13 +1455,11 @@
 
             if (!program) return;
 
-            // Update view count
             program.views = (program.views || 0) + 1;
             const index = programs.findIndex(p => p.id === id);
             programs[index] = program;
             localStorage.setItem('programs', JSON.stringify(programs));
 
-            // Show modal
             document.getElementById('modalTitle').textContent = program.title;
             document.getElementById('modalMeta').innerHTML = `
                 Language: <strong>${escapeHtml(program.language)}</strong> | 
@@ -1034,18 +1497,28 @@
         // Show alert
         const showAlert = (message, type) => {
             const alertId = type === 'success' ? 'successAlert' : 'errorAlert';
-            const alert = document.getElementById(alertId);
-            alert.textContent = message;
-            alert.classList.add('show');
+            let alert = document.getElementById(alertId);
+            
+            if (!alert) {
+                alert = document.getElementById('contactAlert');
+            }
+            
+            if (alert) {
+                alert.textContent = message;
+                alert.className = `alert ${type === 'success' ? 'alert-success' : 'alert-error'} show`;
 
-            setTimeout(() => {
-                alert.classList.remove('show');
-            }, 4000);
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                }, 4000);
+            }
         };
 
         // Scroll to upload
         const scrollToUpload = () => {
-            document.getElementById('upload').scrollIntoView({ behavior: 'smooth' });
+            showSection('home');
+            setTimeout(() => {
+                document.getElementById('upload').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         };
 
         // Escape HTML
@@ -1059,6 +1532,18 @@
             };
             return text.replace(/[&<>"']/g, m => map[m]);
         };
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            
+            showAlert('Thank you for your message! We\'ll get back to you soon at ' + email, 'success');
+            document.getElementById('contactForm').reset();
+        });
 
         // Close modal when clicking outside
         document.getElementById('programModal').addEventListener('click', (e) => {
