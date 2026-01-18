@@ -1,0 +1,23 @@
+<h2>HTML Programs</h2>
+
+<div id="list"></div>
+
+<!-- Ad -->
+<ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-XXXXXXXX"
+ data-ad-slot="9876543210"
+ data-ad-format="auto"></ins>
+
+<script>
+fetch("YOUR_SCRIPT_URL")
+.then(res => res.json())
+.then(data => {
+  data.forEach(row => {
+    document.getElementById("list").innerHTML +=
+      `<h3>${row[1]}</h3>
+       <p>${row[2]}</p>
+       <a href="view.html?code=${encodeURIComponent(row[3])}">Run</a>`;
+  });
+});
+</script>
