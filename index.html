@@ -1,130 +1,1075 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Programs | TechnicalQuery7</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeShare - Upload, share, and run programs online. Free online programming platform with code execution, syntax highlighting, and community programs.">
+    <meta name="keywords" content="code sharing, online programming, code execution, python, javascript, tutorials">
+    <meta name="author" content="CodeShare Platform">
+    <meta property="og:title" content="CodeShare - Upload and Share Programs">
+    <meta property="og:description" content="Upload, execute, and share your code with the community">
+    <meta property="og:type" content="website">
+    
+    <title>CodeShare - Upload & Share Programs Online</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- AdSense (add after approval) -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-     crossorigin="anonymous"></script>
--->
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #059669;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#f4f6f8;
-}
-header{
-    background:#0a58ca;
-    color:#fff;
-    padding:20px;
-    text-align:center;
-}
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
-.card{
-    background:#fff;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
-.card h3{
-    margin-top:0;
-}
-.card a{
-    text-decoration:none;
-    color:#0a58ca;
-    font-weight:bold;
-}
-footer{
-    background:#222;
-    color:#ccc;
-    text-align:center;
-    padding:15px;
-    margin-top:30px;
-}
-</style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "💻";
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Features Grid */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .upload-container {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .upload-container.drag-over {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-container p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Programs List */
+        .programs-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: var(--bg-white);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .program-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .program-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .language-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .program-description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .program-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .program-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .program-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn-view {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        .btn-delete:hover {
+            background: #fecaca;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        .code-preview {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        /* AdSense Placeholder */
+        .ads-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f0f9ff;
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .upload-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(37, 99, 235, 0.1);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinner.show {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">CodeShare</a>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button class="btn btn-primary" onclick="scrollToUpload()">Upload Program</button>
+        </nav>
+    </header>
 
-<header>
-    <h1>TechnicalQuery7 Programs</h1>
-    <p>Free HTML, JavaScript & Google Script Projects</p>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Share Your Code with the World</h1>
+        <p>Upload, execute, and share your programming projects. Learn from others, collaborate, and build together.</p>
+        <div class="ads-container">
+            📢 Advertisement Space (Google AdSense)
+        </div>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="scrollToUpload()">Start Uploading</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('programs').scrollIntoView({behavior: 'smooth'})">Browse Programs</button>
+        </div>
+    </section>
 
-<section>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose CodeShare?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Execution</h3>
+                <p>Execute your code instantly with minimal latency and see results in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Safe</h3>
+                <p>Your code runs in a sandboxed environment. We prioritize security and privacy.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Learn Together</h3>
+                <p>Browse community programs, learn from others, and improve your coding skills.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Community</h3>
+                <p>Connect with developers worldwide and share your knowledge with everyone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Easy Sharing</h3>
+                <p>Share your programs with a single click and get feedback from the community.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics</h3>
+                <p>Track views and engagement for your uploaded programs.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-    <h2>📌 About This Website</h2>
-    <p>
-        TechnicalQuery7 is a free technical learning platform where we create,
-        test and publish real-world HTML, JavaScript, Google Apps Script and
-        automation based programs.
-    </p>
-</div>
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <h2 class="section-title">Upload Your Program</h2>
+        <div class="upload-container" id="uploadContainer">
+            <div class="upload-icon">📤</div>
+            <h2>Upload Your Program</h2>
+            <p>Drag and drop your code file or click to select</p>
+            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Choose File</button>
+            <input type="file" id="fileInput" accept=".py,.js,.java,.cpp,.c,.html,.css,.txt,.json,.xml">
+        </div>
 
-<div class="card">
-    <h2>⚙️ How This Website Works</h2>
-    <ul>
-        <li>All programs are built using HTML & JavaScript</li>
-        <li>Hosted FREE using GitHub Pages</li>
-        <li>Google Apps Script & Google Sheets used as backend</li>
-        <li>No paid hosting or server required</li>
-        <li>Anyone can access and use programs</li>
-    </ul>
-</div>
+        <div id="uploadForm" style="display: none; margin-top: 2rem;">
+            <div class="alert alert-success" id="successAlert">Program uploaded successfully!</div>
+            <div class="alert alert-error" id="errorAlert"></div>
+            
+            <form id="programForm">
+                <div class="form-group">
+                    <label for="programTitle">Program Title *</label>
+                    <input type="text" id="programTitle" required placeholder="Enter program title">
+                </div>
 
-<div class="card">
-    <h2>⭐ Website Qualities</h2>
-    <ul>
-        <li>Fast & Secure (HTTPS)</li>
-        <li>Mobile Friendly</li>
-        <li>Free Open Access</li>
-        <li>Beginner Friendly</li>
-        <li>AdSense Ready</li>
-    </ul>
-</div>
+                <div class="form-group">
+                    <label for="programDescription">Description</label>
+                    <textarea id="programDescription" placeholder="Describe what your program does..."></textarea>
+                </div>
 
-<div class="card">
-    <h2>🧩 Available Programs</h2>
+                <div class="form-group">
+                    <label for="programLanguage">Programming Language *</label>
+                    <select id="programLanguage" required>
+                        <option value="">Select Language</option>
+                        <option value="Python">Python</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C">C</option>
+                        <option value="HTML/CSS">HTML/CSS</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
 
-    <h3>1️⃣ Calculator App</h3>
-    <p>Simple calculator using HTML & JavaScript</p>
-    <a href="projects/calculator.html" target="_blank">Open Program</a>
+                <div class="form-group">
+                    <label for="programCode">Code Preview</label>
+                    <div class="code-preview" id="codePreview" style="max-height: 300px; overflow-y: auto;">Select a file to preview...</div>
+                </div>
 
-    <hr>
+                <div class="form-group">
+                    <label for="tags">Tags (comma separated)</label>
+                    <input type="text" id="tags" placeholder="e.g. beginner, web, tutorial">
+                </div>
 
-    <h3>2️⃣ OTP Login System</h3>
-    <p>Email based OTP verification using Google Script</p>
-    <a href="projects/otp-login.html" target="_blank">Open Program</a>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Upload Program</button>
+            </form>
+        </div>
+    </section>
 
-    <hr>
+    <div class="ads-container">
+        📢 Advertisement Space (Google AdSense)
+    </div>
 
-    <h3>3️⃣ Chat Application</h3>
-    <p>Group chat app with Google Sheet database</p>
-    <a href="projects/chat-app.html" target="_blank">Open Program</a>
+    <!-- Programs Section -->
+    <section class="programs-section" id="programs">
+        <h2 class="section-title">Community Programs</h2>
+        <div class="programs-grid" id="programsGrid">
+            <!-- Programs will be loaded here -->
+        </div>
+        <div id="emptyState" style="text-align: center; padding: 3rem; color: var(--text-gray);">
+            <p style="font-size: 1.1rem;">No programs uploaded yet. Be the first to share!</p>
+        </div>
+    </section>
 
-    <hr>
+    <!-- FAQ Section -->
+    <section style="max-width: 900px; margin: 4rem auto; padding: 0 2rem;" id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="display: grid; gap: 1.5rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is CodeShare free?</h3>
+                <p style="color: var(--text-gray);">Yes! CodeShare is completely free to use. Upload, share, and execute your programs without any cost.</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">What languages are supported?</h3>
+                <p style="color: var(--text-gray);">We support Python, JavaScript, Java, C++, C, HTML/CSS, and more. Check our documentation for the full list.</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Is my code secure?</h3>
+                <p style="color: var(--text-gray);">Your code runs in a secure, sandboxed environment. We use industry-standard security practices to protect your data.</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Can I delete my uploaded programs?</h3>
+                <p style="color: var(--text-gray);">Yes, you can delete any of your programs at any time. Just click the delete button on the program card.</p>
+            </div>
+        </div>
+    </section>
 
-    <h3>➕ More Programs Coming Soon</h3>
-    <p>We regularly upload new automation & web projects</p>
+    <div class="ads-container">
+        📢 Advertisement Space (Google AdSense)
+    </div>
 
-</div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About CodeShare</h4>
+                <p>CodeShare is a free platform for developers to upload, share, and execute code. Join our community today!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#upload">Upload</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#api">API Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CodeShare. All rights reserved. | Made with ❤️ by developers, for developers</p>
+        </div>
+    </footer>
 
-</section>
+    <!-- Program View Modal -->
+    <div class="modal" id="programModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2 id="modalTitle" style="margin-bottom: 0.5rem;"></h2>
+            <div id="modalMeta" style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.9rem;"></div>
+            <p id="modalDescription" style="color: var(--text-gray); margin-bottom: 1rem;"></p>
+            <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Code:</h3>
+            <div class="code-preview" id="modalCode" style="max-height: 400px; overflow-y: auto;"></div>
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                <button class="btn btn-primary" onclick="copyCode()" style="flex: 1;">Copy Code</button>
+                <button class="btn btn-secondary" onclick="closeModal()" style="flex: 1;">Close</button>
+            </div>
+        </div>
+    </div>
 
-<footer>
-    © 2026 TechnicalQuery7.xyz | Built with ❤️ using HTML & GitHub Pages
-</footer>
+    <script>
+        // Initialize local storage for programs
+        const initializeStorage = () => {
+            if (!localStorage.getItem('programs')) {
+                localStorage.setItem('programs', JSON.stringify([]));
+            }
+        };
 
+        // Get all programs
+        const getPrograms = () => {
+            return JSON.parse(localStorage.getItem('programs') || '[]');
+        };
+
+        // Save program
+        const saveProgram = (program) => {
+            const programs = getPrograms();
+            program.id = Date.now().toString();
+            program.createdAt = new Date().toLocaleDateString();
+            program.views = 0;
+            programs.unshift(program);
+            localStorage.setItem('programs', JSON.stringify(programs));
+            return program;
+        };
+
+        // Delete program
+        const deleteProgram = (id) => {
+            const programs = getPrograms().filter(p => p.id !== id);
+            localStorage.setItem('programs', JSON.stringify(programs));
+        };
+
+        // File upload handling
+        const uploadContainer = document.getElementById('uploadContainer');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+        const programForm = document.getElementById('programForm');
+        let selectedFile = null;
+
+        // Drag and drop
+        uploadContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadContainer.classList.add('drag-over');
+        });
+
+        uploadContainer.addEventListener('dragleave', () => {
+            uploadContainer.classList.remove('drag-over');
+        });
+
+        uploadContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadContainer.classList.remove('drag-over');
+            handleFileSelect(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        const handleFileSelect = (file) => {
+            if (!file) return;
+
+            const validExtensions = ['.py', '.js', '.java', '.cpp', '.c', '.html', '.css', '.txt', '.json', '.xml'];
+            const fileName = file.name;
+            const fileExt = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+
+            if (!validExtensions.includes(fileExt)) {
+                showAlert('Please upload a valid code file', 'error');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                showAlert('File size must be less than 5MB', 'error');
+                return;
+            }
+
+            selectedFile = file;
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const content = e.target.result;
+                document.getElementById('programTitle').value = fileName.replace(/\.[^/.]+$/, '');
+                document.getElementById('codePreview').textContent = content;
+                
+                // Detect language
+                const langMap = {
+                    '.py': 'Python',
+                    '.js': 'JavaScript',
+                    '.java': 'Java',
+                    '.cpp': 'C++',
+                    '.c': 'C',
+                    '.html': 'HTML/CSS',
+                    '.css': 'HTML/CSS'
+                };
+                document.getElementById('programLanguage').value = langMap[fileExt] || 'Other';
+
+                uploadContainer.style.display = 'none';
+                uploadForm.style.display = 'block';
+            };
+
+            reader.readAsText(file);
+        };
+
+        // Form submission
+        programForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const program = {
+                title: document.getElementById('programTitle').value,
+                description: document.getElementById('programDescription').value,
+                language: document.getElementById('programLanguage').value,
+                code: document.getElementById('codePreview').textContent,
+                tags: document.getElementById('tags').value
+            };
+
+            if (!program.title || !program.language) {
+                showAlert('Please fill in all required fields', 'error');
+                return;
+            }
+
+            saveProgram(program);
+            showAlert('Program uploaded successfully!', 'success');
+
+            // Reset form
+            programForm.reset();
+            document.getElementById('codePreview').textContent = 'Select a file to preview...';
+            uploadContainer.style.display = 'block';
+            uploadForm.style.display = 'none';
+            selectedFile = null;
+
+            // Refresh programs list
+            displayPrograms();
+
+            // Scroll to programs
+            document.getElementById('programs').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Display programs
+        const displayPrograms = () => {
+            const programs = getPrograms();
+            const grid = document.getElementById('programsGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            if (programs.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            grid.innerHTML = programs.map(program => `
+                <div class="program-card">
+                    <div class="program-card-header">
+                        <h3 class="program-title">${escapeHtml(program.title)}</h3>
+                        <span class="language-badge">${escapeHtml(program.language)}</span>
+                    </div>
+                    <p class="program-description">${escapeHtml(program.description || 'No description provided')}</p>
+                    <div class="program-meta">
+                        <span>📅 ${program.createdAt}</span>
+                        <span>👁️ ${program.views} views</span>
+                        ${program.tags ? `<span>🏷️ ${escapeHtml(program.tags)}</span>` : ''}
+                    </div>
+                    <div class="program-actions">
+                        <button class="btn-view" onclick="viewProgram('${program.id}')">View Code</button>
+                        <button class="btn-delete" onclick="deleteProgramConfirm('${program.id}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        // View program
+        const viewProgram = (id) => {
+            const programs = getPrograms();
+            const program = programs.find(p => p.id === id);
+
+            if (!program) return;
+
+            // Update view count
+            program.views = (program.views || 0) + 1;
+            const index = programs.findIndex(p => p.id === id);
+            programs[index] = program;
+            localStorage.setItem('programs', JSON.stringify(programs));
+
+            // Show modal
+            document.getElementById('modalTitle').textContent = program.title;
+            document.getElementById('modalMeta').innerHTML = `
+                Language: <strong>${escapeHtml(program.language)}</strong> | 
+                Uploaded: <strong>${program.createdAt}</strong> | 
+                Views: <strong>${program.views}</strong>
+            `;
+            document.getElementById('modalDescription').textContent = program.description || 'No description provided';
+            document.getElementById('modalCode').textContent = program.code;
+
+            document.getElementById('programModal').classList.add('active');
+        };
+
+        // Close modal
+        const closeModal = () => {
+            document.getElementById('programModal').classList.remove('active');
+        };
+
+        // Copy code
+        const copyCode = () => {
+            const code = document.getElementById('modalCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showAlert('Code copied to clipboard!', 'success');
+            });
+        };
+
+        // Delete program
+        const deleteProgramConfirm = (id) => {
+            if (confirm('Are you sure you want to delete this program?')) {
+                deleteProgram(id);
+                displayPrograms();
+                showAlert('Program deleted successfully', 'success');
+            }
+        };
+
+        // Show alert
+        const showAlert = (message, type) => {
+            const alertId = type === 'success' ? 'successAlert' : 'errorAlert';
+            const alert = document.getElementById(alertId);
+            alert.textContent = message;
+            alert.classList.add('show');
+
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 4000);
+        };
+
+        // Scroll to upload
+        const scrollToUpload = () => {
+            document.getElementById('upload').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // Escape HTML
+        const escapeHtml = (text) => {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        };
+
+        // Close modal when clicking outside
+        document.getElementById('programModal').addEventListener('click', (e) => {
+            if (e.target.id === 'programModal') {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        initializeStorage();
+        displayPrograms();
+    </script>
 </body>
 </html>
