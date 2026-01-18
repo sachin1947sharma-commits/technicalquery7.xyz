@@ -1,21 +1,130 @@
-<h2>Upload HTML Program</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Programs | TechnicalQuery7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<form id="uploadForm">
-  <input name="title" placeholder="Program Title" required><br><br>
-  <textarea name="desc" placeholder="Description"></textarea><br><br>
-  <textarea name="code" placeholder="Paste HTML Code" rows="10"></textarea><br><br>
-  <button>Submit</button>
-</form>
+<!-- AdSense (add after approval) -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+-->
 
-<script>
-document.getElementById("uploadForm").onsubmit = function(e){
-  e.preventDefault();
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+}
+header{
+    background:#0a58ca;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+.card{
+    background:#fff;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.card h3{
+    margin-top:0;
+}
+.card a{
+    text-decoration:none;
+    color:#0a58ca;
+    font-weight:bold;
+}
+footer{
+    background:#222;
+    color:#ccc;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+</style>
+</head>
 
-  fetch("YOUR_SCRIPT_URL", {
-    method: "POST",
-    body: new FormData(this)
-  })
-  .then(r => r.text())
-  .then(() => alert("Program Uploaded"));
-};
-</script>
+<body>
+
+<header>
+    <h1>TechnicalQuery7 Programs</h1>
+    <p>Free HTML, JavaScript & Google Script Projects</p>
+</header>
+
+<section>
+
+<div class="card">
+    <h2>📌 About This Website</h2>
+    <p>
+        TechnicalQuery7 is a free technical learning platform where we create,
+        test and publish real-world HTML, JavaScript, Google Apps Script and
+        automation based programs.
+    </p>
+</div>
+
+<div class="card">
+    <h2>⚙️ How This Website Works</h2>
+    <ul>
+        <li>All programs are built using HTML & JavaScript</li>
+        <li>Hosted FREE using GitHub Pages</li>
+        <li>Google Apps Script & Google Sheets used as backend</li>
+        <li>No paid hosting or server required</li>
+        <li>Anyone can access and use programs</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>⭐ Website Qualities</h2>
+    <ul>
+        <li>Fast & Secure (HTTPS)</li>
+        <li>Mobile Friendly</li>
+        <li>Free Open Access</li>
+        <li>Beginner Friendly</li>
+        <li>AdSense Ready</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>🧩 Available Programs</h2>
+
+    <h3>1️⃣ Calculator App</h3>
+    <p>Simple calculator using HTML & JavaScript</p>
+    <a href="projects/calculator.html" target="_blank">Open Program</a>
+
+    <hr>
+
+    <h3>2️⃣ OTP Login System</h3>
+    <p>Email based OTP verification using Google Script</p>
+    <a href="projects/otp-login.html" target="_blank">Open Program</a>
+
+    <hr>
+
+    <h3>3️⃣ Chat Application</h3>
+    <p>Group chat app with Google Sheet database</p>
+    <a href="projects/chat-app.html" target="_blank">Open Program</a>
+
+    <hr>
+
+    <h3>➕ More Programs Coming Soon</h3>
+    <p>We regularly upload new automation & web projects</p>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 TechnicalQuery7.xyz | Built with ❤️ using HTML & GitHub Pages
+</footer>
+
+</body>
+</html>
