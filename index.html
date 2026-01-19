@@ -1221,7 +1221,17 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a onclick="showSection('home')">Home</a></li>
+                    <li>
+  <a href="index.html" onclick="event.preventDefault(); goHome();">Home</a>
+</li>
+
+<script>
+function goHome(){
+  showSection('home');
+  window.location.replace("index.html");
+}
+</script>
+
                     <li><a onclick="showSection('programs')">Programs</a></li>
                     <li><a onclick="showSection('about')">About Us</a></li>
                     <li><a onclick="showSection('contact')">Contact</a></li>
